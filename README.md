@@ -1,1 +1,38 @@
-# SQL-for-CW1-Ho-Lok-Yin
+
+# Trail Management System
+
+This project defines a relational database schema for managing hiking trails, user accounts, profiles, badges, social links, comments, and recommendations. It also includes a consolidated view and a trigger for logging profile changes.
+
+---
+
+## 📌 Database Overview
+
+The system consists of the following components:
+
+- **TrailService**: Stores trail details.
+- **AccountService**: Manages user accounts.
+- **ProfileService**: Holds user preferences and roles.
+- **BadgeService**: Tracks badges earned by users.
+- **LinkedDataService**: Stores social media or external links.
+- **CommentsService**: Records user comments on trails.
+- **RecommentsService**: Captures user suggestions or replies.
+- **AllTableViews**: A view combining data from all tables.
+- **ProfileServiceLog & Trigger**: Logs profile insert actions.
+
+---
+
+## 🗂 Schema Details
+
+### 1. TrailService
+Stores hiking trail information.
+
+```sql
+CREATE TABLE TrailService (
+    TrailID VARCHAR(100) NOT NULL PRIMARY KEY,
+    TrailName VARCHAR(100) NOT NULL,
+    TrailDescription TEXT DEFAULT NULL,
+    TrailLength DECIMAL(4,1) DEFAULT NULL,
+    TrailTime VARCHAR(20) DEFAULT NULL,
+    TrailPoint VARCHAR(20) DEFAULT NULL CHECK (TrailPoint IN ('Loop', 'Point to Point', 'Out and Back')),
+    TrailDifficulty VARCHAR(20) DEFAULT NULL CHECK (TrailDifficulty IN ('Easy', 'Moderate', 'Hard'))
+);
