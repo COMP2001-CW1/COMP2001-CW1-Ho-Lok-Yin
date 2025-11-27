@@ -21,18 +21,4 @@ The system consists of the following components:
 
 ---
 
-## 🗂 Schema Details
 
-### 1. TrailService
-Stores hiking trail information.
-
-```sql
-CREATE TABLE TrailService (
-    TrailID VARCHAR(100) NOT NULL PRIMARY KEY,
-    TrailName VARCHAR(100) NOT NULL,
-    TrailDescription TEXT DEFAULT NULL,
-    TrailLength DECIMAL(4,1) DEFAULT NULL,
-    TrailTime VARCHAR(20) DEFAULT NULL,
-    TrailPoint VARCHAR(20) DEFAULT NULL CHECK (TrailPoint IN ('Loop', 'Point to Point', 'Out and Back')),
-    TrailDifficulty VARCHAR(20) DEFAULT NULL CHECK (TrailDifficulty IN ('Easy', 'Moderate', 'Hard'))
-);
